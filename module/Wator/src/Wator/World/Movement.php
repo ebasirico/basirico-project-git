@@ -6,48 +6,43 @@
  * Time: 12:36
  */
 
-namespace Wator\World;
+namespace Wator\World ;
 
 
-class Movement
-{
-    private $speed;
-    private $direction;
+class Movement {
+    private  $speed;
+    private $direction  ;
 
-    const NORTH = 'n';
-    const SOUTH = 's';
-    const EAST = 'e';
-    const WEST = 'w';
+    const NORTH = 'n' ;
+    const SOUTH = 's' ;
+    const EAST  = 'e' ;
+    const WEST  = 'w' ;
 
     /**
      * @param int $speed
      * Numero di caselle consentite nello spostamento
      */
 
-    public function __construct($speed = 1)
-    {
+    public function __construct( $speed = 1 ) {
         $this->speed = $speed;
-        $this->direction = self::NORTH;
+        $this->direction = self::NORTH ;
     }
 
-    public function setDirection($direction)
-    {
-        $this->direction = $direction;
+    public function setDirection( $direction ) {
+        $this->direction = $direction ;
     }
 
     /**
      * @return string questa funzione ritorna la direzione intrapresa dal pesce
      */
-    public function getDirection()
-    {
-        return $this->direction;
+    public function getDirection() {
+        return $this->direction ;
     }
 
     /**
      * @return array di possibili direzioni da intraprendere.
      */
-    public function getDirections()
-    {
+    public function getDirections() {
         return [
             self::NORTH,
             self::EAST,

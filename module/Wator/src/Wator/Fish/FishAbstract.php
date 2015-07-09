@@ -7,21 +7,20 @@
  */
 
 namespace Wator\Fish;
-
 use Wator\World\MovableInterface;
 use Wator\World\Movement;
+use Wator\Fate\Life;
 
 /**
  * Class Fish
  * @package Wator
  * E' una classe astratta del tipo Fish
  */
-abstract class FishAbstract implements FishInterface, MovableInterface
-{
+abstract class FishAbstract implements FishInterface, MovableInterface {
     /**
      * @integer health rappresenta la vita del pesce
      */
-    private $health;
+    private $health ;
 
     /**
      * @integer health rappresenta la specie del pesce
@@ -33,17 +32,15 @@ abstract class FishAbstract implements FishInterface, MovableInterface
      *
      */
 
-    public function getHealth()
-    {
+    public function getHealth(){
         return $this->health;
     }
 
     /**
      * @param $health
      */
-    public function setHealth($health)
-    {
-        $this->health = $health;
+    public function setHealth( $health ) {
+        $this->health = $health ;
     }
 
     /**
@@ -54,7 +51,7 @@ abstract class FishAbstract implements FishInterface, MovableInterface
     {
         $move = new Movement();
         $dirs = $move->getDirections();
-        $dir = rand(0, count($dirs) - 1);
+        $dir = rand(0,count($dirs)-1);
         $move->setDirection($dirs[$dir]);
 
         return $move;
@@ -63,16 +60,14 @@ abstract class FishAbstract implements FishInterface, MovableInterface
     /**
      * @param $species
      */
-    public function setSpecies($species)
-    {
+    public function setSpecies($species){
         $this->species = $species;
     }
 
     /**
      * @return string species.
      */
-    public function getSpecies()
-    {
+    public function getSpecies(){
         return $this->species;
     }
 

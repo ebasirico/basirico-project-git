@@ -11,13 +11,12 @@ namespace Wator\Render;
 
 use Wator\Wator;
 
-interface RenderInterface
-{
+interface RenderInterface {
 
 
-    public function getWator();
+public function getWator();
 
 
-    public function setWator(Wator $wator);
+public function setWator(Wator $wator);
 
 }

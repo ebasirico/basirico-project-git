@@ -20,14 +20,13 @@ use Wator\World\WorldMap;
 class Life
 {
 
-    const EDEN_SHARK_FACTOR = 0.02;
-    const EDEN_RED_FISH_FACTOR = 0.15;
+    const EDEN_SHARK_FACTOR = 0.02 ;
+    const EDEN_RED_FISH_FACTOR = 0.15 ;
 
     /**
      * @var WorldMap
      */
-    protected $worldMap;
-    /**
+    protected $worldMap;    /**
      * @param $width
      * @param $height
      *
@@ -55,12 +54,11 @@ class Life
      * Aggiunta degli Squali.
      */
 
-    protected function populateSharks()
-    {
+    protected function populateSharks() {
 
-        $size = $this->worldMap->getHeight() * $this->worldMap->getWidth();
+        $size = $this->worldMap->getHeight() * $this->worldMap->getWidth() ;
         $num = $size * self::EDEN_SHARK_FACTOR;
-        for ($i = 0; $i < $num; $i++) {
+        for( $i=0; $i<$num; $i++) {
             $this->worldMap->add(new Shark());
         }
 
@@ -69,11 +67,10 @@ class Life
     /**
      * Aggiunta Pesci Rossi.
      */
-    protected function populateRedFish()
-    {
-        $size = $this->worldMap->getHeight() * $this->worldMap->getWidth();
+    protected function populateRedFish() {
+        $size = $this->worldMap->getHeight() * $this->worldMap->getWidth() ;
         $num = $size * self::EDEN_RED_FISH_FACTOR;
-        for ($i = 0; $i < $num; $i++) {
+        for( $i=0; $i<$num; $i++) {
             $this->worldMap->add(new RedFish());
         }
 
@@ -85,28 +82,26 @@ class Life
      * @param array $sons
      */
 
-    public function breeding(FishInterface $father, array $sons)
+    public function breeding(FishInterface $father, array $sons )
     {
-        foreach ($sons as $son) {
-            if ($son instanceof FishInterface) {
-                $this->worldMap->addNearFather($father, $son);
+        foreach( $sons as $son ) {
+            if ($son instanceof FishInterface){
+                $this->worldMap->addNearFather($father,$son);
             }
         }
     }
-
     /**
      * Funzione di Movimento di tutti i pesci . Con Gestione Cibo.
      */
-    public function moveAllFish()
-    {
+    public function moveAllFish(){
         $items = $this->worldMap->getFishList();
-        foreach ($items as $fish) {
+        foreach ($items as $fish ){
 
-            if ($fish instanceof MovableInterface) {
+            if ($fish instanceof MovableInterface){
                 $mov = $fish->getMovement();
-                $res = $this->worldMap->move($fish, $mov);
-                if ($res !== true) {
-                    if ($fish instanceof PredatorInterface AND $res instanceof FoodInterface) {
+                $res = $this->worldMap->move($fish,$mov);
+                if(  $res !== true ) {
+                    if ($fish instanceof PredatorInterface AND  $res instanceof FoodInterface){
                         $fish->eat($res);
                         $dead = new Dead($this->worldMap);
                         $dead->kill($res);
@@ -121,13 +116,12 @@ class Life
      * Controlla se il pesce puo' avere figli
      * Controlla se la sua vita e' uguale a 0 se lo e' il pesce muore .
      */
-    public function decreaseAllHealth()
-    {
+    public function decreaseAllHealth(){
         $items = $this->worldMap->getFishList();
 
-        $lun = count($items);
+        $lun  = count($items);
 
-        for ($i = 0; $i < $lun; $i++) {
+        for ($i=0; $i<$lun; $i++){
             $fish = $items[$i];
             if ($fish instanceof FishInterface) {
                 $fish->setHealth($fish->getHealth() - 1);
@@ -143,7 +137,7 @@ class Life
                 }
             }
 
-        }
+            }
 
     }
 

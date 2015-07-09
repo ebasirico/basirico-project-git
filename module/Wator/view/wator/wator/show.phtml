@@ -5,26 +5,27 @@
 
 <button style="alignment: center" onclick="updateMap()">UPDATE</button>
 
-<p> Cronoma : <?php echo $this->cronono; ?>   <a href="create">Ricrea il mondo!</a></p>
+<p> Cronoma : <?php echo $this->cronono ; ?>   <a href="create">Ricrea il mondo!</a> </p>
+
+    <script type="text/javascript">
+        function updateMap() {
+            document.getElementById("map").src='/wator/map?'+Math.floor(Math.random()*11);
+        }
+    </script>
+        <img id="map" name="map" src="/wator/map?5"/>
+
 
 <script type="text/javascript">
-    function updateMap() {
-        document.getElementById("map").src = '/wator/map?' + Math.floor(Math.random() * 11);
-    }
-</script>
-<img id="map" name="map" src="/wator/map?5"/>
-
-
-<script type="text/javascript">
-    $("#map").load(function () {
-        if (navigator.userAgent.search("Firefox") >= 0) {
-            setTimeout(function () {
+        $("#map").load(function () {
+            if (navigator.userAgent.search("Firefox") >= 0) {
+                setTimeout(function(){
+                    updateMap();
+                }, 750);
+            }
+            else
+            {
                 updateMap();
-            }, 750);
-        }
-        else {
-            updateMap();
-        }
-    });
+            }
+        });
 
 </script>

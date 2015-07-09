@@ -7,23 +7,25 @@
  */
 
 
-$url = $this->url('wator', array('action' => 'next'));
+
+
+$url = $this->url('wator', array('action'=>'next'));
 ?>
 
 
 <button onclick="window.location.href='<?php echo $url ?>'">NEXT</button>
 
 <pre><?php
-    foreach ($this->map as $rows) {
-        foreach ($rows as $cell) {
-            if ($cell === null) {
-                echo ".";
-            } else {
-                echo "?";
-            }
+        foreach( $this->map as $rows ) {
+            foreach( $rows as $cell ) {
+                if( $cell === null ) {
+                    echo ".";
+                } else {
+                    echo "?";
+                }
 
+            }
+            echo "\n";
         }
-        echo "\n";
-    }
 
     ?></pre>

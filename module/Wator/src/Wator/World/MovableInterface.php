@@ -9,12 +9,11 @@
 namespace Wator\World;
 
 
-interface MovableInterface
-{
+interface MovableInterface {
 
     /**
      * @return Movement che viene deciso in modo casuale dal pesce
      */
-    public function getMovement();
+    public function getMovement() ;
 
 }

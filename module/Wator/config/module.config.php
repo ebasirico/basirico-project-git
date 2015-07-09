@@ -15,7 +15,7 @@ return array(
         ),
     ),
 
-    'router' => array(
+    'router'=>array(
         'routes' => array(
             'wator' => array(
                 'type' => 'segment',
@@ -26,7 +26,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Wator\Controller\Wator',
-                        'action' => 'index',
+                        'action'     => 'index',
                     ),
                 ),
             ),
@@ -36,30 +36,30 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
-                'wator-monitor' => array(
+                'wator-monitor'  => array(
                     'options' => array(
-                        'route' => 'wator monitor [<w>] [<h>]',
+                        'route'    => 'wator monitor [<w>] [<h>]',
                         'defaults' => array(
                             'controller' => 'Wator\Controller\ConsoleWator',
-                            'action' => 'monitor'
+                            'action'     => 'monitor'
                         )
                     )
                 ),
-                'wator-interactive' => array(
-                    'options' => array(
-                        'route' => 'wator interactive [<w>] [<h>]',
-                        'defaults' => array(
-                            'controller' => 'Wator\Controller\ConsoleWator',
-                            'action' => 'interactive'
-                        )
-                    )
+                'wator-interactive'  => array(
+                   'options' => array(
+                       'route'    => 'wator interactive [<w>] [<h>]',
+                       'defaults' => array(
+                           'controller' => 'Wator\Controller\ConsoleWator',
+                           'action'     => 'interactive'
+                       )
+                   )
                 ),
                 'wator-log' => array(
                     'options' => array(
-                        'route' => 'wator log [<w>] [<h>]',
+                        'route'    => 'wator log [<w>] [<h>]',
                         'defaults' => array(
                             'controller' => 'Wator\Controller\ConsoleWator',
-                            'action' => 'log'
+                            'action'    =>  'log'
                         ),
                     ),
                 ),

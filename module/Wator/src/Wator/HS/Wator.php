@@ -1,5 +1,5 @@
 <?php
-namespace Wator\HS;
+namespace Wator\HS ;
 /**
  * Created by PhpStorm.
  * User: Ivano Pomatto <i.pomatto@visiotrade.it>
@@ -7,12 +7,11 @@ namespace Wator\HS;
  * Time: 23:43
  */
 
-class Wator extends \Wator\Wator
-{
+class Wator extends \Wator\Wator {
     public function  __construct($width, $height)
     {
         $this->life = new LifeHS();
-        $this->world = $this->life->startEden($width, $height);
+        $this->world = $this->life->startEden($width,$height);
 
         $this->chronons = 0;
     }

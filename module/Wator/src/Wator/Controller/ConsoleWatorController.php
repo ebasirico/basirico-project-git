@@ -8,32 +8,29 @@
 
 namespace Wator\Controller;
 
-use Wator\HS\Wator as VariantWator;
 use Wator\Render\ConsoleRender;
 use Wator\Render\InteractiveConsoleRender;
 use Wator\Render\MonitorConsoleRender;
 use Wator\Wator;
-use Zend\Console\Request as ConsoleRequest;
 use Zend\Mvc\Controller\AbstractConsoleController;
 use Zend\View\Model\ViewModel;
+use Wator\HS\Wator as VariantWator;
+use Zend\Console\Request as ConsoleRequest;
 
-class ConsoleWatorController extends AbstractConsoleController
-{
+class ConsoleWatorController  extends AbstractConsoleController {
 
-    public function indexAction()
-    {
+    public function indexAction(){
         return new ViewModel();
     }
 
-    public function monitorAction()
-    {
-        $width = $this->params()->fromRoute('w', 100);
-        $height = $this->params()->fromRoute('h', 100);
+    public function monitorAction() {
+        $width  = $this->params()->fromRoute('w',100);
+        $height = $this->params()->fromRoute('h',100);
 
-        $wator = new VariantWator($width, $height);
-        $render = new MonitorConsoleRender($wator, $this->getConsole());
+        $wator = new VariantWator($width,$height);
+        $render = new MonitorConsoleRender($wator,$this->getConsole());
 
-        while (true) {
+        while(true){
             $render->render();
             $render->consoleUpdate();
 
@@ -45,25 +42,24 @@ class ConsoleWatorController extends AbstractConsoleController
      * Render Stile Log .
      */
 
-    public function logAction()
-    {
+    public function logAction(){
 
         $console = $this->getConsole();
         $request = $this->getRequest();
 
-        if (!$request instanceof ConsoleRequest) {
+        if (!$request instanceof ConsoleRequest){
             throw new \RuntimeException('You can only use this action from a console!');
         }
 
-        $width = $this->params()->fromRoute('w', 100);
-        $height = $this->params()->fromRoute('h', 100);
+        $width  = $this->params()->fromRoute('w',100);
+        $height = $this->params()->fromRoute('h',100);
 
-        $wator = new Wator($width, $height);
+        $wator = new Wator($width,$height);
 
-        $render = new ConsoleRender($wator, $console);
+        $render = new ConsoleRender($wator,$console);
 
-        while (true) {
-            $render->getConsoleWrite($wator->getChronons(), $wator);
+        while(true){
+            $render->getConsoleWrite($wator->getChronons(),$wator);
             $wator->updateWorld();
         }
     }
@@ -76,8 +72,8 @@ class ConsoleWatorController extends AbstractConsoleController
 
         $console = $this->getConsole();
 
-        $width = $this->params()->fromRoute('w', 100);
-        $height = $this->params()->fromRoute('h', 100);
+        $width  = $this->params()->fromRoute('w',100);
+        $height = $this->params()->fromRoute('h',100);
 
         $wator = new Wator($width, $height);
 

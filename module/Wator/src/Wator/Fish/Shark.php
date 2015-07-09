@@ -12,15 +12,14 @@ namespace Wator\Fish;
  * @package Wator
  * La classe Shark estende la classe Fish in quanto rappresenta una variante della specie essa puo' mangiare e riprodursi ma non puo' essere mangiata.
  */
-class Shark extends FishAbstract implements PredatorInterface, FishInterface
-{
+class Shark extends FishAbstract implements PredatorInterface, FishInterface{
     const MAX_SHARK_HEALTH = 80;
 
     /**
      * @param string $species
      *
      */
-    function __construct($species = "S")
+    function __construct( $species = "S")
     {
         $this->setSpecies($species);
         $this->setHealth(20);
@@ -31,15 +30,14 @@ class Shark extends FishAbstract implements PredatorInterface, FishInterface
      */
     public function eat(FoodInterface $food)
     {
-        $this->setHealth($this->getHealth() + $food->getHealthWhenEat());
+        $this->setHealth($this->getHealth()+$food->getHealthWhenEat());
     }
 
     /**
      * @return array
      */
-    public function getChildren()
-    {
-        if ($this->getHealth() > self::MAX_SHARK_HEALTH) {
+    public function getChildren(){
+        if ( $this->getHealth() > self::MAX_SHARK_HEALTH){
             return array
             (
                 new Shark(),

@@ -7,15 +7,14 @@
  */
 
 namespace Wator;
-
 use Wator\Fate\Life;
+
 
 
 /**
  * Gestore unico di tutto il mondo di wator
  */
-class Wator
-{
+class Wator {
     protected $life;
     protected $world;
     protected $chronons;
@@ -25,10 +24,9 @@ class Wator
      * @param $width
      * @param $height
      */
-    public function  __construct($width, $height)
-    {
+    public function  __construct($width,$height){
         $this->life = new Life();
-        $this->world = $this->life->startEden($width, $height);
+        $this->world = $this->life->startEden($width,$height);
         $this->chronons = 0;
 
     }
@@ -36,8 +34,7 @@ class Wator
     /**
      * @return array mappa del mondo
      */
-    public function getWorldMap()
-    {
+    public function getWorldMap() {
         return $this->world->getMap();
 
     }
@@ -45,31 +42,25 @@ class Wator
     /**
      * @return integer worldWidth
      */
-    public function getWorldMapWidth()
-    {
+    public function getWorldMapWidth() {
         return $this->world->getWidth();
     }
-
     /**
      * @return integer worldHeight
      */
-    public function getWorldMapHeight()
-    {
+    public function getWorldMapHeight() {
         return $this->world->getHeight();
     }
 
     /**
      * Aggiornamento del mondo tramite Life.
      */
-    public function updateWorld()
-    {
+    public function updateWorld(){
         $this->chronons++;
         $this->life->moveAllFish();
         $this->life->decreaseAllHealth();
     }
-
-    public function getChronons()
-    {
+    public function getChronons(){
         return $this->chronons;
     }
 

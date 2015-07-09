@@ -10,19 +10,18 @@ namespace Wator\Fate;
 
 
 use Wator\Fish\FishInterface;
+use Wator\Fish\PredatorInterface;
 use Wator\World\Map\Matrix;
 use Wator\World\WorldMap;
 
-class Dead
-{
-    protected $worldMap;
+class Dead {
+    protected  $worldMap;
 
     /**
      * Aggiornamento Mappa
      * @param WorldMap $worldMap
      */
-    public function __construct(WorldMap $worldMap)
-    {
+    public function __construct(WorldMap $worldMap){
         $this->worldMap = $worldMap;
     }
 
@@ -33,13 +32,12 @@ class Dead
      */
 
 
-    public function startNuke(Matrix $matrix)
-    {
+    public function startNuke(Matrix $matrix){
 
         $w = $matrix->getWidth();
         $h = $matrix->getHeight();
 
-        $matrix = new Matrix($w, $h);
+        $matrix = new Matrix($w,$h);
 
     }
 
@@ -47,9 +45,8 @@ class Dead
      * Eliminazione Oggetto dalla Matrice.
      * @param FishInterface $fish
      */
-    public function kill(FishInterface $fish)
-    {
-        $this->worldMap->delete($fish);
+    public function kill(FishInterface $fish){
+           $this->worldMap->delete($fish);
     }
 
 

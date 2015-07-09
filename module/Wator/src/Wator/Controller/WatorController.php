@@ -9,6 +9,7 @@
 namespace Wator\Controller;
 
 
+use Wator\Render\PngRender;
 use Wator\Render\PngRenderX4;
 use Wator\Wator;
 use Zend\Http\Response\Stream;
@@ -17,31 +18,27 @@ use Zend\Session\Container;
 use Zend\View\Model\ViewModel;
 
 
-class WatorController extends AbstractActionController
-{
+class WatorController  extends AbstractActionController  {
 
 
     /**
      * @return Container
      */
-    private function getSession()
-    {
+    private function getSession() {
         $session = new Container('wator');
-        return $session;
+        return $session ;
     }
 
     /**
      * Cancella tutto il mondo di wator e si prepara ad avviarne uno nuovo
      */
-    private function initSession()
-    {
+    private function initSession() {
         $session = $this->getSession();
-        $session->chronons = 0;
-        $session->wator = null;
+        $session->chronons = 0 ;
+        $session->wator = null ;
     }
 
-    public function indexAction()
-    {
+    public function indexAction() {
 
     }
 
@@ -51,12 +48,11 @@ class WatorController extends AbstractActionController
      * creata dal PngRender e cambia ogni volta che
      * la mappa si aggiorna.
      */
-    public function mapAction()
-    {
+    public function mapAction() {
 
         $session = $this->getSession();
         /** @var Wator $wator */
-        $wator = $session->wator;
+        $wator =  $session->wator ;
         $wator->updateWorld();
 
         $render = new PngRenderX4($wator);
@@ -73,11 +69,11 @@ class WatorController extends AbstractActionController
     }
 
 
+
     /**
      * Crea un nuovo mondo wator
      */
-    public function createAction()
-    {
+    public function createAction() {
 
         $this->initSession();
         $session = $this->getSession();
@@ -85,18 +81,17 @@ class WatorController extends AbstractActionController
         $width = 35;
         $height = 35;
 
-        $wator = new Wator($width, $height);
-        $session->wator = $wator;
+        $wator = new Wator($width,$height);
+        $session->wator = $wator ;
     }
 
     /**
      * Fa passare un giorno nel mondo di wator
      */
-    public function showAction()
-    {
+    public function showAction() {
         $session = $this->getSession();
         /** @var Wator $wator */
-        $wator = $session->wator;
+        $wator =  $session->wator ;
 
         return new ViewModel(array(
             'cronono' => $session->chronons

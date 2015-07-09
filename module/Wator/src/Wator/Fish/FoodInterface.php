@@ -11,11 +11,10 @@ namespace Wator\Fish;
 /**
  * Se un pesce implementa questa interfaccia allora può essere mangiato
  */
-interface FoodInterface
-{
+interface FoodInterface {
 
     /**
      * @return integer
      */
-    public function getHealthWhenEat();
+    public function getHealthWhenEat() ;
 }

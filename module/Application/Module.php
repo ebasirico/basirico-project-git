@@ -9,13 +9,13 @@
 
 namespace Application;
 
-use Zend\Console\Adapter\AdapterInterface as Console;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
-use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Zend\Console\Adapter\AdapterInterface as Console;
+use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
 
 class Module implements
     AutoloaderProviderInterface,
@@ -26,10 +26,10 @@ class Module implements
 
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager = $e->getApplication()->getEventManager();
+        $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-    }
+}
 
     public function getConfig()
     {
@@ -48,12 +48,13 @@ class Module implements
     }
 
 
+
+
     public function getConsoleBanner(Console $console)
     {
     }
 
-    public function getConsoleUsage(Console $console)
-    {
+    public function getConsoleUsage(Console $console ){
 
     }
 }
