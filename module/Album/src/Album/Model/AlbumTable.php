@@ -9,6 +9,8 @@
 namespace Album\Model;
 
 
+
+
 use Zend\Db\TableGateway\TableGateway;
 
 class AlbumTable
@@ -55,8 +57,7 @@ class AlbumTable
         }
     }
 
-    public function deleteAlbum($id)
-    {
-        $this->tableGateway->delete(array('id' => (int)$id));
+    public function deleteAlbum($id){
+        $this->tableGateway->delete(array('id'=> (int) $id));
     }
 }

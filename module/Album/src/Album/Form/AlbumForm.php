@@ -10,15 +10,13 @@ namespace Album\Form;
 
 use Zend\Form\Form;
 
-class AlbumForm extends Form
-{
-    public function __construct($name = null)
-    {
+class AlbumForm extends Form{
+    public function __construct($name=null){
         parent::__construct('album');
 
         $this->add(array(
-            'name' => 'id',
-            'type' => 'Hidden',
+            'name'=>'id',
+            'type'=>'Hidden',
         ));
 
         $this->add(array(
@@ -30,7 +28,7 @@ class AlbumForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'artist',
+           'name' => 'artist',
             'type' => 'Text',
             'options' => array(
                 'label' => 'Artist',
@@ -38,11 +36,11 @@ class AlbumForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'submit',
+           'name' => 'submit',
             'type' => 'Text',
             'options' => array(
                 'value' => 'Go',
-                'id' => 'submitbutton',
+                'id'  => 'submitbutton',
             ),
         ));
     }

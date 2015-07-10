@@ -14,24 +14,22 @@ namespace Wator\World;
  *
  * @package Wator\World
  */
-class Position
-{
+class Position {
 
     /**
      * @var int
      */
-    private $x;
+    private $x ;
 
     /**
      * @var int
      */
-    private $y;
+    private $y ;
 
 
-    function __construct($x, $y)
-    {
-        $this->x = $x;
-        $this->y = $y;
+    function __construct( $x, $y) {
+        $this->x = $x ;
+        $this->y = $y ;
     }
 
     /**
@@ -39,22 +37,21 @@ class Position
      * @return Position
      * return Posizione di Move.
      */
-    public function calculateNewPoint(Movement $move)
-    {
-        $destination = new Position($this->x, $this->y);
+    public function calculateNewPoint( Movement $move ) {
+        $destination = new Position($this->x,$this->y);
 
-        switch ($move->getDirection()) {
+        switch( $move->getDirection() ) {
             case Movement::NORTH:
-                $destination->setY($destination->getY() + $move->getSpeed());
+                $destination->setY($destination->getY()+$move->getSpeed());
                 break;
             case Movement::SOUTH:
-                $destination->setY($destination->getY() - $move->getSpeed());
+                $destination->setY($destination->getY()-$move->getSpeed());
                 break;
             case Movement::WEST:
-                $destination->setX($destination->getX() - $move->getSpeed());
+                $destination->setX($destination->getX()-$move->getSpeed());
                 break;
             case Movement::EAST:
-                $destination->setX($destination->getX() + $move->getSpeed());
+                $destination->setX($destination->getX()+$move->getSpeed());
                 break;
             default :
                 throw new \RuntimeException('errore direzione');
@@ -94,6 +91,8 @@ class Position
     {
         $this->y = $y;
     }
+
+
 
 
 }

@@ -14,7 +14,7 @@ return array(
         ),
     ),
 
-    'router' => array(
+    'router'=>array(
         'routes' => array(
             'album' => array(
                 'type' => 'segment',
@@ -22,11 +22,11 @@ return array(
                     'route' => '/album[/:action][/:id]',
                     'constrains' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
+                        'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Album\Controller\Album',
-                        'action' => 'index',
+                        'action'     => 'index',
                     ),
                 ),
             ),
@@ -38,6 +38,7 @@ return array(
             'album' => __DIR__ . '/../view',
         ),
     ),
+
 
 
 );

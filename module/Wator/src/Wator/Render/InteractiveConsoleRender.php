@@ -10,15 +10,14 @@ namespace Wator\Render;
 
 
 use Wator\Fish\FishInterface;
+use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter ;
 use Wator\Wator;
-use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter;
 
-class InteractiveConsoleRender extends Render implements RenderInterface
-{
+class InteractiveConsoleRender extends Render implements RenderInterface{
 
-    protected $rendering;
-    protected $console;
-    protected $wator;
+    protected  $rendering;
+    protected  $console;
+    protected  $wator;
     private $chronons;
 
     public function getTime()
@@ -31,13 +30,13 @@ class InteractiveConsoleRender extends Render implements RenderInterface
      * @param Wator $wator
      * @param ConsoleAdapter $adapter
      */
-    public function __construct(Wator $wator, ConsoleAdapter $adapter)
+    public function __construct(Wator $wator , ConsoleAdapter $adapter)
     {
         $this->setRender($wator);
         $this->time = new Time();
         $this->console = $adapter;
         $this->console->clearScreen();
-        $this->console->writeBox(2, 2, 38, 11);
+        $this->console->writeBox(2,2,38,11);
 
     }
 
@@ -46,8 +45,7 @@ class InteractiveConsoleRender extends Render implements RenderInterface
      * @param $chronons
      * @param Wator $wator
      */
-    public function getConsoleWrite($chronons, Wator $wator)
-    {
+    public function getConsoleWrite($chronons, Wator $wator){
         $this->chronons = $chronons;
         $this->setWator($wator);
         $this->updateMap();
@@ -68,12 +66,12 @@ class InteractiveConsoleRender extends Render implements RenderInterface
         $shark = 0;
         $fish = 0;
 
-        $start = microtime(true) * 1000;
+        $start = microtime(true)*1000;
         for ($x = 0; $x < $this->getW(); $x++) {
             for ($y = 0; $y < $this->getH(); $y++) {
                 $obj = $map[$x][$y];
                 if ($obj instanceof FishInterface) {
-                    $fish += 1;
+                    $fish +=1;
                     if ($obj->getSpecies() == "S") {
                         $shark += 1;
                     } elseif ($obj->getSpecies() == "RF") {
@@ -86,13 +84,14 @@ class InteractiveConsoleRender extends Render implements RenderInterface
         }
         $peakMemory = memory_get_peak_usage();
 
-        $peakMemory = $peakMemory / 1024;
+        $peakMemory = $peakMemory/1024;
 
         $this->time->stopTimer();
 
         $time = $this->time->getTime();
 
-        $updateTime = $time / $fish;
+        $updateTime = $time/$fish ;
+
 
 
         $type = 'Cronoma';
@@ -109,7 +108,7 @@ class InteractiveConsoleRender extends Render implements RenderInterface
         $this->getMemory($memory);
         $type = 'Render Pesce';
         $format = "%20s : %' 10f";
-        $this->console->writeAt(sprintf($format, $type, $updateTime), 3, 9);
+        $this->console->writeAt(sprintf($format,$type,$updateTime),3,9);
 
         $this->console->writeLine("");
         $this->console->writeLine("");
@@ -125,14 +124,14 @@ class InteractiveConsoleRender extends Render implements RenderInterface
      * @param array $memory
      */
 
-    public function getMemory(array $memory)
-    {
+    public function getMemory(array $memory){
         $type = 'Current Memory (KB)';
         $format = "%20s : %' 10d";
-        for ($i = 0; $i < count($memory); $i++) {
-            $this->console->writeAt(sprintf($format, $type, $memory[$i] / 1024), 3, 8);
-        }
+       for($i=0; $i< count($memory) ; $i++){
+           $this->console->writeAt(sprintf($format, $type,$memory[$i]/1024), 3, 8);
+       }
     }
+
 
 
 }

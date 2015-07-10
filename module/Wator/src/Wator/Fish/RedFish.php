@@ -9,10 +9,8 @@
 namespace Wator\Fish;
 
 
-class RedFish extends FishAbstract implements FoodInterface, FishInterface
-{
+class RedFish extends FishAbstract implements FoodInterface , FishInterface{
     const MAX_RED_FISH_HEALTH = 0;
-
     function __construct($species = "RF")
     {
 
@@ -31,19 +29,18 @@ class RedFish extends FishAbstract implements FoodInterface, FishInterface
     public function getHealthWhenEat()
     {
         // TODO: Implement getHealthWhenEat() method.
-        return $this->getHealth() / 2;
+        return $this->getHealth()/2 ;
     }
 
 
-    public function getChildren()
-    {
-        if ($this->getHealth() <= self::MAX_RED_FISH_HEALTH) {
+    public function getChildren(){
+        if ( $this->getHealth() <= self::MAX_RED_FISH_HEALTH){
             return array(
-                new RedFish(),
+                 new RedFish(),
                 new RedFish(),
             );
         }
-        return array();
+        return array() ;
     }
 
 }

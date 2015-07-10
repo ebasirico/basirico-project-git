@@ -5,15 +5,15 @@
  * Date: 12/06/2015
  * Time: 16:17
  */
-namespace Wator\World\Map;
+namespace Wator\World\Map ;
 
 use Wator\World\Position;
+use Wator\World\WorldMap;
 
-class Matrix
-{
+class Matrix {
 
-    private $w;
-    private $h;
+    private $w ;
+    private $h ;
     private $matrix;
 
 
@@ -25,14 +25,13 @@ class Matrix
      * questa classe infatti si occupera' di gestire i numeri
      * soltanto senza conoscerne il significato.
      */
-    public function __construct($w, $h, $filler = null)
-    {
-        $this->w = $w;
-        $this->h = $h;
+    public function __construct($w,$h,$filler=null) {
+        $this->w = $w ;
+        $this->h = $h ;
 
         $matrix = array();
-        for ($i = 0; $i < $w; $i++) {
-            $matrix[] = array_fill(0, $h, $filler);
+        for( $i=0; $i<$w; $i++ ) {
+            $matrix[] = array_fill(0,$h,$filler);
         }
         $this->matrix = $matrix;
     }
@@ -46,8 +45,7 @@ class Matrix
      * wator.
      */
 
-    public function put($item, Position $pos)
-    {
+    public function put( $item, Position $pos ) {
         $this->fixPosition($pos);
         $this->matrix[$pos->getX()][$pos->getY()] = $item;
     }
@@ -58,8 +56,7 @@ class Matrix
      * @param Position $pos
      * @return mixed
      */
-    public function get(Position $pos)
-    {
+    public function get( Position $pos ) {
         $this->fixPosition($pos);
         return $this->matrix[$pos->getX()][$pos->getY()];
     }
@@ -70,17 +67,16 @@ class Matrix
      * @return Position|null
      */
 
-    public function search($item)
-    {
+    public function search( $item ) {
 
-        for ($x = 0; $x < $this->w; $x++) {
-            for ($y = 0; $y < $this->h; $y++) {
-                if ($this->matrix[$x][$y] === $item) {
-                    return new Position($x, $y);
+        for ($x=0 ; $x < $this->w; $x++){
+            for ($y=0; $y < $this->h; $y++) {
+                if($this->matrix[$x][$y] === $item){
+                    return new Position($x,$y);
                 }
             }
         }
-        return null;
+        return null  ;
     }
 
     /**
@@ -88,18 +84,17 @@ class Matrix
      * Il metodo fixPosition si occupa di far
      * si che il nostro mondo sia Toroidale.
      */
-    public function fixPosition(Position $pos)
-    {
-        if ($pos->getX() < 0) {
-            $pos->setX($this->w + $pos->getX());
-        } elseif ($pos->getX() >= $this->w) {
-            $pos->setX($pos->getX() - $this->w);
+    public function fixPosition( Position $pos ) {
+        if( $pos->getX() < 0 ) {
+            $pos->setX( $this->w  + $pos->getX());
+        }elseif( $pos->getX() >=  $this->w) {
+            $pos->setX( $pos->getX() - $this->w);
         }
 
-        if ($pos->getY() < 0) {
-            $pos->setY($this->h + $pos->getY());
-        } elseif ($pos->getY() >= $this->h) {
-            $pos->setY($pos->getY() - $this->h);
+        if( $pos->getY() < 0 ) {
+            $pos->setY ($this->h + $pos->getY());
+        }elseif( $pos->getY() >=  $this->h) {
+            $pos->setY( $pos->getY() - $this->h );
         }
     }
 

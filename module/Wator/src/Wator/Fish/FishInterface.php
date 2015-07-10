@@ -20,7 +20,7 @@ interface FishInterface
     /**
      * @return array di Fish o array null
      */
-    public function getChildren();
+    public function getChildren() ;
 
     /**
      * setta la vita del pesce

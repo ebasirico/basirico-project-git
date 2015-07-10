@@ -11,8 +11,7 @@ namespace Wator\Render;
 
 use Wator\Wator;
 
-interface RenderFileInterface
-{
+interface RenderFileInterface {
     /**
      * @param Wator $wator
      * @return mixed

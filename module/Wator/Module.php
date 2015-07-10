@@ -8,15 +8,14 @@
 
 namespace Wator;
 
-use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
 use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Zend\Console\Adapter\AdapterInterface as Console;
 
-class Module implements ConsoleBannerProviderInterface, ConsoleUsageProviderInterface, AutoloaderProviderInterface, ConfigProviderInterface
-{
-
+class Module implements ConsoleBannerProviderInterface,ConsoleUsageProviderInterface,AutoloaderProviderInterface, ConfigProviderInterface {
+    
     public function getAutoloaderConfig()
     {
         return array(
@@ -36,8 +35,7 @@ class Module implements ConsoleBannerProviderInterface, ConsoleUsageProviderInte
         return include __DIR__ . '/config/module.config.php';
     }
 
-    public function getConsoleBanner(Console $console)
-    {
+    public function getConsoleBanner(Console $console){
 
         return "Wator Module 0.0.1";
     }
@@ -46,13 +44,13 @@ class Module implements ConsoleBannerProviderInterface, ConsoleUsageProviderInte
     {
         return array(
             // Describe available commands
-            'wator log' => 'Log di ciò che succede nella mappa.',
+            'wator log'    => 'Log di ciò che succede nella mappa.' ,
 
 //            array( 'EMAIL',            'Email of the user for a password reset' ),
-            array('w', '(optional) inserire larghezza della mappa '),
-            array('h', '(optional) inserire altezza della mappa '),
+           array( 'w',     '(optional) inserire larghezza della mappa '        ),
+            array( 'h',     '(optional) inserire altezza della mappa '        ),
 
-            'wator interactive' => 'Render Interattivo della mappa di Wator'
+            'wator interactive'    => 'Render Interattivo della mappa di Wator'
         );
     }
 

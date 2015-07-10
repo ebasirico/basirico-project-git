@@ -11,8 +11,7 @@ namespace Wator\Render;
 
 use Wator\Wator;
 
-abstract class Render implements RenderInterface
-{
+abstract class Render implements RenderInterface{
 
     private $h;
     private $w;
@@ -27,16 +26,14 @@ abstract class Render implements RenderInterface
         return $this->wator;
     }
 
-    public function getMap()
-    {
+    public function getMap(){
         return $this->map;
     }
 
-    public function updateMap()
-    {
-        if ($this->wator instanceof Wator) {
-            $this->map = $this->wator->getWorldMap();
-        }
+    public function updateMap(){
+       if ($this->wator instanceof Wator){
+           $this->map = $this->wator->getWorldMap();
+       }
     }
 
     /**
@@ -79,8 +76,7 @@ abstract class Render implements RenderInterface
         $this->w = $w;
     }
 
-    public function setRender(Wator $wator)
-    {
+    public function setRender(Wator $wator){
         $this->setH($wator->getWorldMapHeight());
         $this->setW($wator->getWorldMapWidth());
         $this->setWator($wator);

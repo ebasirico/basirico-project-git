@@ -10,15 +10,14 @@ namespace Wator\Render;
 
 
 use Wator\Fish\FishInterface;
+use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter ;
 use Wator\Wator;
-use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter;
 
-class ConsoleRender extends Render implements RenderInterface
-{
+class ConsoleRender extends Render implements RenderInterface{
 
-    protected $rendering;
-    protected $console;
-    protected $wator;
+    protected  $rendering;
+    protected  $console;
+    protected  $wator;
     private $chronons;
 
     public function getTime()
@@ -30,7 +29,7 @@ class ConsoleRender extends Render implements RenderInterface
      * @param Wator $wator
      * @param ConsoleAdapter $adapter
      */
-    public function __construct(Wator $wator, ConsoleAdapter $adapter)
+    public function __construct(Wator $wator , ConsoleAdapter $adapter)
     {
         $this->setRender($wator);
         $this->time = new Time();
@@ -43,8 +42,7 @@ class ConsoleRender extends Render implements RenderInterface
      * @param $chronons
      * @param Wator $wator
      */
-    public function getConsoleWrite($chronons, Wator $wator)
-    {
+    public function getConsoleWrite($chronons, Wator $wator){
         $this->chronons = $chronons;
         $this->setWator($wator);
         $this->updateMap();
@@ -70,7 +68,7 @@ class ConsoleRender extends Render implements RenderInterface
             for ($y = 0; $y < $this->getH(); $y++) {
                 $obj = $map[$x][$y];
                 if ($obj instanceof FishInterface) {
-                    $fish += 1;
+                    $fish +=1;
                     if ($obj->getSpecies() === "S") {
                         $shark += 1;
                     } elseif ($obj->getSpecies() === "RF") {
@@ -85,16 +83,16 @@ class ConsoleRender extends Render implements RenderInterface
 
         $time = $this->time->getTime();
 
-        $updateTime = $time / $fish;
+        $updateTime = $time/$fish ;
 
         $format = "[%' 05d]:%' 11s %' 10d";
         $type = 'Pesci rossi';
-        $this->console->writeLine(sprintf($format, $this->chronons, $type, $redFish));
+        $this->console->writeLine(sprintf($format,$this->chronons,$type, $redFish));
         $type = 'Squali';
-        $this->console->writeLine(sprintf($format, $this->chronons, $type, $shark));
+        $this->console->writeLine(sprintf($format,$this->chronons,$type, $shark));
         $type = 'Render Pesce';
         $format = "[%'.05d]:%'. 11s %' 10f";
-        $this->console->writeLine(sprintf($format, $this->chronons, $type, $updateTime));
+        $this->console->writeLine(sprintf($format,$this->chronons,$type, $updateTime));
 
 
     }
